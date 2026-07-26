@@ -1,0 +1,5071 @@
+{
+  "name": "news-WW",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6
+            },
+            {
+              "triggerAtHour": 11,
+              "triggerAtMinute": 30
+            },
+            {
+              "triggerAtHour": 16,
+              "triggerAtMinute": 30
+            },
+            {
+              "triggerAtHour": 21
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2192,
+        1744
+      ],
+      "id": "8b15f9e8-a83e-4d5d-9d3d-692e1d895690",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.timestamp }}",
+        "timeUnit": "hours",
+        "duration": 5,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1648,
+        1744
+      ],
+      "id": "749bfbeb-6e6c-4ae3-b5fb-c3d36b2ceef8",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "numberInputs": 10
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        464,
+        1600
+      ],
+      "id": "4596933d-923b-4b71-8e64-efe693371cb4",
+      "name": "Merge",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "76a1cc6b-9f13-4a3b-bdcd-46f8e043c354",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "a15218f4-1950-4dfe-86bc-3be3fe4b29c2",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "7b664159-17eb-4370-83be-30c477735a39",
+              "name": "content",
+              "value": "={{ $json.contentSnippet }}",
+              "type": "string"
+            },
+            {
+              "id": "b92bca24-364c-46d1-9877-82b4c3a79377",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "4065adae-701a-4b5c-b866-22a3b570cfb3",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        1264
+      ],
+      "id": "70e5853b-e6ea-4b51-bac4-87a7f6ae743e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a44f54c8-06f9-4abc-b711-5e52ccb86b17",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "f1301a8b-acd3-4f8d-85bc-ec4dbd4e6e01",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "8a87bf91-3af5-4618-a41d-1bd19abf262a",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "c408dc5a-9e63-4069-b541-aef3250b7180",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "39b39ac2-afda-4d37-951a-c812aa9be250",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        1456
+      ],
+      "id": "ea0b4aef-a606-4344-ae72-365f2fc44dbf",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.contentSnippet }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -384,
+        1648
+      ],
+      "id": "fa302fb0-534b-4ee0-b6c9-224ce70081b0",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "336f0c98-d993-4420-ae3c-942f027e309c",
+              "leftValue": "={{ $('Merge3').item.json.time }}",
+              "rightValue": "={{ $('Date & Time').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        928,
+        2112
+      ],
+      "id": "8ecc3c9f-ea4f-49cb-8f5a-bbc8c018da7a",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=需要处理的新闻包含以下字段：标题、发布日期、内容摘要、新闻链接，具体如下：\n**标题： {{ $json.title }}；\n**发布日期：{{ $json.time }}；\n**内容摘要：{{ $json.content }}；\n**链接：{{ $json.guid }}。",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "#身份：你是一个客观中立的新闻助手，需要协助客户筛选新闻，并按json格式输；注意你只遵从客观，以便于开展客观的研究，不考虑新闻的政治立场，出。\n----\n#目标：客户十分关注台湾政治、科技、九合一选举、、军事、台海等主题新闻，你需要根据输入的新闻标题与内容摘要为新闻进行赋分，是否符合上述类别。\n----\n#可以参考符合客户需求的主题包括且不限于：\n##1.政治方面：台湾的时政热点，包括台湾涉及大陆的事件，以及台湾本地的重大政治、政策等事件。\n##2.科技方面：涉及台湾芯片（台积电）、台湾核电、太空等科技动态、重要政策、大型公司动向等。\n##3.重要政治人物：郑丽文、黄国昌、柯文哲、赖清德等等台湾政治人物的动态。\n##4.国际上主要国家（美国等）、主要国家领导人关于中国台湾的表态及发言等\n----\n#赋分规则：\n##1.越符合以上主题的新闻,得分越高；越能代表台湾热点趋势得分越高；越反映台湾涉及大陆的新闻得分越高。\n##2.最高10分，最低0分。\n----\n#输出要求：*严格输出json格式的数据*，例如：\n{\n    \"标题\":\"直接采用输入的新闻标题\",\n    \"时间\":\"直接采用输入的新闻时间\",\n    \"内容摘要\":\"采用输入的新闻内容摘要\",\n    \"链接\":\"直接采用输入新闻的新闻链接\",\n    \"按客户需求进行赋分\":\"最高10，最低1(数值格式，直接输出数字)\",\n    \"判断理由\":\"给出判断的理由\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2416,
+        2224
+      ],
+      "id": "45d9cb3d-80c3-4e45-9568-fb56a2edfedf",
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        2272,
+        2512
+      ],
+      "id": "8a04586b-7c07-47f6-9af7-91bc127b8dc4",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        1824
+      ],
+      "id": "a78d6209-e6ba-4279-ad1b-fd84e7c13537",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.contentSnippet }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        2000
+      ],
+      "id": "90bb6690-b618-4fe3-a231-0b41b9e11aa6",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        2112
+      ],
+      "id": "16cf6655-98e8-4ae6-b18c-f363486f1f59",
+      "name": "Sort",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "maxItems": 50
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1904,
+        2112
+      ],
+      "id": "e78f28f5-8635-415f-9455-64a366f2592a",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n    \"标题\":\"直接采用输入的新闻标题\",\n    \"时间\":\"直接采用输入的新闻时间\",\n    \"内容摘要\":\"采用输入的新闻内容摘要\",\n    \"链接\":\"直接采用输入新闻的新闻链接\",\n    \"按客户需求进行赋分\":\"最高10分，最低1分(数字格式，直接输出数字)\",\n    \"判断理由\":\"给出判断的理由\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2672,
+        2496
+      ],
+      "id": "6e6f9837-98d6-4ee5-b491-48f402135a40",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.link }}",
+        "options": {
+          "outputFormat": "",
+          "excludeSelector": "header,footer,.ads"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.jinaAi",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        2176
+      ],
+      "id": "6e9d73bd-15f6-4aaa-8834-8cabf32bc041",
+      "name": "Read URL content",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "jinaAiApi": {
+          "id": "nkZgjmxEqMJqafIH",
+          "name": "Jina AI account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=需要处理的新闻包含以下字段：标题、链接、主要内容、时间，具体如下：\n标题： {{ $json.title }}。\n链接：{{ $json.url }}。\n主要内容：{{ $json.content }}。\n时间：{{ $json.Datetime }}。",
+        "options": {
+          "systemMessage": "=#身份：你是一个客观中立的新闻助手，需要帮助客户对输入新闻进行整理；注意你只遵从客观，以便于开展客观的研究，不考虑新闻的政治立场。\n-------\n#任务：对输入的新闻进行处理并按要求输出。\n-------\n#输出要求：\n\n##1.输出内容包含4个字段：\n**标题（按照输入新闻title以中英文输出，中英文以符号“|”隔开，若为中文则直接输出中文）；\n**时间（直接输出为输入新闻的时间Datetime：{{ $json.Datetime }}）\n**主要内容（以中文输出，150字左右）；\n**链接（直接为输入新闻链接url）。\n\n##2.主要内容字段需整理输入新闻的content；整理主要内容，逻辑清楚、叙述流畅；对于新闻中重要人物的发言、表态或官方的声明等需要保留原始表述；每个新闻150字左右。\n\n##3.输出的各个字段之间需要以换行符隔开。\n\n##4.需将繁体中文转化为简体中文"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        5488,
+        3024
+      ],
+      "id": "42abb4dd-4cf5-4cac-b7df-6d69d8828780",
+      "name": "AI Agent1",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        5344,
+        3232
+      ],
+      "id": "d77a0330-d0fd-4322-bfc7-723307c88242",
+      "name": "DeepSeek Chat Model1",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "2873432864@qq.com",
+        "toEmail": "2873432864@qq.com,1635113186@qq.com,chenchanglin1997@163.com,tw92gongshi@163.com",
+        "emailFormat": "text",
+        "text": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        10256,
+        1568
+      ],
+      "id": "60973f02-6a2c-4b5a-ad36-8fc225816992",
+      "name": "Send email",
+      "webhookId": "4d0ecd96-31c3-4554-bb1a-455250f8c47c",
+      "credentials": {
+        "smtp": {
+          "id": "6ThVCVnPglWqUdmM",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "output"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        5424,
+        2736
+      ],
+      "id": "1bfcc86b-252b-46be-acaf-ad43cdf59405",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "batchSize": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2144,
+        2128
+      ],
+      "id": "695f931f-9f5f-4a0d-8b62-b39aa084bcbf",
+      "name": "Loop Over Items1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2736,
+        2240
+      ],
+      "id": "4ee0c78c-9941-4c8d-9ba5-e548fd650231",
+      "name": "Wait",
+      "webhookId": "db3a5ed3-5dd9-4dda-bbfd-f24c0dc3f874"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=输入的聚合的新闻集如下：\n{{ $json.output }}",
+        "options": {
+          "systemMessage": "#身份：你是你是一个客观中立的新闻整理助手，擅长对新闻集合进行处理生成简报。\n------\n#任务：现在需要将输入的聚合新闻集进行整理并输出新闻简报。\n------\n#具体任务：\n**1.合并相似内容：根据各个新闻内容，将相似内容的多个新闻（新闻内容反映的是同一事件）合并为一条新闻；对于合并后的新闻，只保留第一条新闻的标题、时间及链接，主要内容部分以第一条新闻为主并结合其余相似内容新闻重新撰写，不同报道间的差异可表述为“XX报道称，而XX报道称”，合并后新闻内容不超过180字。\n\n**2.删除无效内容：删除体育、娱乐、生活、食品等新闻，删除无有效内容（例如新闻内容显示404，无具体信息等）。\n\n**3.对新闻进行分类：根据新闻内容将新闻按照不同类别进行分类。\n\n**4.在整个新闻简报的开头，用一段话说明本简报的摘要，然后再开始各个类别的新闻。\n------\n#输出格式要求：\n1、一级标题采用“（一）……”“（二）……”……的格式\n2、一级标题下为新闻。除需合并的新闻外，其余新闻保留原来单个新闻的字段，并按以下格式输出：\n“1.标题：……。时间：……。内容：……。链接：……。\n2.标题：……。时间：……。内容：……。链接：……。\n……”\n3、各类新闻之间需要空一行。\n4、单个新闻内，标题、时间、内容、链接四个字段需要换行。\n5、新闻简报需采用标题：\"**xx月xx日xx时—xx月xx日xx时热点动向**\"。标题的时间需要按照新闻集的时间进行设定，标题前后空一行。\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        5728,
+        2736
+      ],
+      "id": "e4eef98a-f31a-4207-b3a4-12ad599abf14",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "maxItems": 18
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2832,
+        2048
+      ],
+      "id": "98837871-3e1f-47aa-9a9d-4ce454765f4f",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5200,
+        2832
+      ],
+      "id": "52be7a81-e4b0-4c37-840b-5a618a79eeef",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5552,
+        3248
+      ],
+      "id": "ec5cc867-f051-47d1-9984-02522ecd3279",
+      "name": "Wait1",
+      "webhookId": "6db50fc3-d5eb-4ac6-b515-4cf52f2728a0"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc4111a9-49cd-4d1c-9c26-0ec1ffe32c75",
+              "name": "title",
+              "value": "={{ $json.output['标题'] }}",
+              "type": "string"
+            },
+            {
+              "id": "651121da-1b39-48a5-b8e4-9be379490e1c",
+              "name": "iso_date",
+              "value": "={{ $json.output['时间'] }}",
+              "type": "string"
+            },
+            {
+              "id": "caf52f4f-3c83-4b37-82e4-7c9cf4670dad",
+              "name": "link",
+              "value": "={{ $json.output['链接'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3488,
+        2032
+      ],
+      "id": "7b9fa65c-12a5-4034-9083-5d3b329b18d5",
+      "name": "Edit Fields8"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3824,
+        2016
+      ],
+      "id": "e7e46b86-bc45-4821-8bee-7308ff1ecb65",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "output['按客户需求进行赋分']",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        2416,
+        2048
+      ],
+      "id": "e8a7f842-a3e4-4f5a-8a9b-7c7bec7d696a",
+      "name": "Sort1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.contentSnippet }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        2192
+      ],
+      "id": "128ad371-38bd-49d9-8aed-90cb6aebf3c6",
+      "name": "Edit Fields9"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        1264
+      ],
+      "id": "e906f980-6ae6-4c9d-a3e8-2bff4452d948",
+      "name": "Sort2"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        1456
+      ],
+      "id": "c672adca-661e-42cd-9408-bfcf838d334f",
+      "name": "Sort3"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        1648
+      ],
+      "id": "73c29183-fd59-41e5-96fa-011188c0daf2",
+      "name": "Sort4"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        1824
+      ],
+      "id": "c9b5c1d7-b271-426f-9d31-dfd939b45d3a",
+      "name": "Sort5"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2000
+      ],
+      "id": "0991f30b-8940-4e7e-a4c5-2a629e64ed26",
+      "name": "Sort6"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2192
+      ],
+      "id": "235ac162-2e74-45e3-a62a-edf80967c1a4",
+      "name": "Sort7"
+    },
+    {
+      "parameters": {
+        "jsCode": "/*\n * 这是一个计算两个字符串相似度的函数 (基于 Levenshtein 距离)\n * 您不需要修改这个函数\n */\nfunction getSimilarity(a, b) {\n  // 内部函数：计算 Levenshtein 距离\n  function getLevenshteinDistance(a, b) {\n    if (a.length === 0) return b.length;\n    if (b.length === 0) return a.length;\n    const matrix = [];\n    for (let i = 0; i <= b.length; i++) {\n      matrix[i] = [i];\n    }\n    for (let j = 0; j <= a.length; j++) {\n      matrix[0][j] = j;\n    }\n    for (let i = 1; i <= b.length; i++) {\n      for (let j = 1; j <= a.length; j++) {\n        if (b.charAt(i - 1) === a.charAt(j - 1)) {\n          matrix[i][j] = matrix[i - 1][j - 1];\n        } else {\n          matrix[i][j] = Math.min(\n            matrix[i - 1][j - 1] + 1, // substitution\n            matrix[i][j - 1] + 1,     // insertion\n            matrix[i - 1][j] + 1      // deletion\n          );\n        }\n      }\n    }\n    return matrix[b.length][a.length];\n  }\n  // --- 距离函数结束 ---\n\n  const distance = getLevenshteinDistance(a, b);\n  const maxLength = Math.max(a.length, b.length);\n  if (maxLength === 0) return 1;\n  return 1 - (distance / maxLength);\n}\n\n\n/*\n * --- n8n 去重主逻辑 (v1.0+ 语法) ---\n */\n\n// 1. 定义相似度阈值 (0.8 = 80%)\n// 您可以调整这个值 (0.0 到 1.0 之间)\nconst SIMILARITY_THRESHOLD = 0.75;\n\n// \"items\" 变量在 n8n Code 节点中是自动可用的\n// 它包含了所有输入的 items 数组\nconst filteredItems = []; // 存放最终不重复的新闻\n\n// 2. 遍历所有输入的新闻\n// (注意：这里直接使用 \"items\"，而不是 \"$items\")\nfor (const currentItem of items) {\n  let isDuplicate = false;\n  \n  // 3. 确保 'title' 存在，如果不存在则设为空字符串\n  // 这是为了防止 \"cannot read property 'title' of undefined\" 错误\n  const currentTitle = (currentItem.json && currentItem.json.title) ? currentItem.json.title : '';\n\n  // 4. 将当前新闻与 \"filteredItems\" 中已有的新闻逐个比较\n  for (const existingItem of filteredItems) {\n    const existingTitle = (existingItem.json && existingItem.json.title) ? existingItem.json.title : '';\n\n    // 计算两条标题的相似度\n    const similarity = getSimilarity(currentTitle, existingTitle);\n\n    // 5. 如果相似度超过阈值，则标记为重复\n    if (similarity >= SIMILARITY_THRESHOLD) {\n      isDuplicate = true;\n      // 已经是重复项，没必要再和 \"filteredItems\" 里的其他项比较了\n      break; \n    }\n  }\n\n  // 6. 如果当前新闻不重复，则将其加入最终列表\n  if (!isDuplicate) {\n    filteredItems.push(currentItem);\n  }\n}\n\n// 7. 返回去重后的 n8n item 列表\nreturn filteredItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        2112
+      ],
+      "id": "33d31590-ca18-4d67-bfa6-bb29783f7492",
+      "name": "Code in JavaScript",
+      "retryOnFail": true,
+      "waitBetweenTries": 1500
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        2384
+      ],
+      "id": "0c00f56e-aeba-4d2a-9d5f-56b199a4fb80",
+      "name": "Edit Fields11"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2384
+      ],
+      "id": "e543e9cd-4544-489f-bf33-facd610d8bc3",
+      "name": "Sort8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e1e06292-c4d7-4977-8cdf-4a6df346d3c8",
+              "leftValue": "={{ $json.output['按客户需求进行赋分'].toNumber() }}",
+              "rightValue": 5,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2624,
+        2048
+      ],
+      "id": "f8a4d924-7bb3-4385-aeb0-a81477e4816a",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        2560
+      ],
+      "id": "057043e9-759c-48bf-abeb-198eb9a5c940",
+      "name": "Edit Fields15"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2560
+      ],
+      "id": "a6702c09-c808-48c6-83b1-b2ec4ac3d9ef",
+      "name": "Sort9"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        4048,
+        2016
+      ],
+      "id": "8ebdb3ed-e162-4e37-93c5-c3bc7b9ebe76",
+      "name": "Loop Over Items2"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3824,
+        2208
+      ],
+      "id": "fc9dbe4c-a352-4c52-8d7e-42ecd63a9da9",
+      "name": "Wait2",
+      "webhookId": "0bc94dae-4bac-4916-81e7-6ef87feb1b96"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        2736
+      ],
+      "id": "b3efdc06-0599-4afe-8414-eb88f152a828",
+      "name": "Edit Fields16"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2736
+      ],
+      "id": "7ee96ed1-6a11-485d-a5e9-3718d2b6a1c9",
+      "name": "Sort10"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        2944
+      ],
+      "id": "7f58dcb6-a80f-49f2-baab-2246f39a41e1",
+      "name": "Edit Fields17"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2944
+      ],
+      "id": "4406ac2a-195e-4b95-9c1d-5e85e0ba8be0",
+      "name": "Sort11"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        688,
+        2096
+      ],
+      "id": "5745ff4a-9178-48d3-bc1b-1843583d5cfe",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "472c4c18-bbfa-49e1-a32f-7f230be3d490",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "b0c9b0e7-bff9-4e82-acd0-634ee81668c3",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            },
+            {
+              "id": "eeeff5cb-94ca-4072-b7b4-84cfb375b411",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "af93baa3-7903-46ff-97cf-d789fc9f1045",
+              "name": "guid",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "d0e06bbb-c029-4dc2-8e51-b7f77a6ef863",
+              "name": "time",
+              "value": "={{ $json.isoDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -368,
+        3136
+      ],
+      "id": "8439aa03-669b-4e37-b027-305f8c7b42be",
+      "name": "Edit Fields18"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        3136
+      ],
+      "id": "6531f7fe-032f-4d9c-8e5e-6043bc5b56d6",
+      "name": "Sort12"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.time }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd HH:mm:ss（北京时间）",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        144,
+        1264
+      ],
+      "id": "288b2cd6-43e7-4676-829a-216af2297c77",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "588891eb-c193-4028-928f-a17bf81c83e4",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "5bd70db7-7a0c-420f-9a4b-8b9a6e15dedd",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "018b2cb5-6cbf-4d3f-8b08-864c289599de",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "a131a7a3-9444-415b-a859-be3862e6e171",
+              "name": "publishedTime",
+              "value": "={{ $('Merge1').item.json.iso_date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4496,
+        2000
+      ],
+      "id": "98953ea8-00ec-4b0f-ad04-aee0f66b9ce2",
+      "name": "Jina ai的结果"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.publishedTime }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd HH:mm:ss（北京时间）",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        4720,
+        2000
+      ],
+      "id": "234c3af3-7a02-4bf2-8669-9f26cdcf7df1",
+      "name": "datetime-format"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "849522a1-b01f-4648-b4fc-67580fbf982a",
+              "name": "title",
+              "value": "={{ $('Jina ai的结果').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "a8b85285-aa87-447e-b36d-43af2a7d23f1",
+              "name": "Datetime",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "9577095d-0f69-45cd-9922-55f2c02734e2",
+              "name": "content",
+              "value": "={{ $('Jina ai的结果').item.json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "3b8d4e3d-2c17-48a8-8446-2fff2102832c",
+              "name": "url",
+              "value": "={{ $('Jina ai的结果').item.json.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4944,
+        2000
+      ],
+      "id": "f8825cea-9265-4d64-a70f-0f16ebe83593",
+      "name": "jina-ai-time-format"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/rsscna/politics",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        1264
+      ],
+      "id": "baa00555-b89a-4311-8cd1-35430d14236f",
+      "name": "中央社-政治",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://rsshub.rssforever.com/chinatimes/politic",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        1456
+      ],
+      "id": "dc9c0e60-3f93-47a3-88bf-f9a25680d636",
+      "name": "中时新闻-政治",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://udn.com/news/rssfeed/6638",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -640,
+        1648
+      ],
+      "id": "594802e5-08d8-4bbe-9ae5-d93d5851b99d",
+      "name": "联合新闻",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "maxItems": 30
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        32,
+        1648
+      ],
+      "id": "54d14e5a-c9ab-4b2f-9dd0-0b92913e289a",
+      "name": "Limit5"
+    },
+    {
+      "parameters": {
+        "url": "https://www.rfi.fr/cn/rss",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -640,
+        1824
+      ],
+      "id": "7f3b0ec4-71c8-489c-ab0f-2d24a8aec569",
+      "name": "法广-台海",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/rsscna/technology",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -640,
+        2000
+      ],
+      "id": "4cf6d5af-a9b8-4d81-9774-a7994e36bd39",
+      "name": "中央社-科技",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://www.scmp.com/rss/318198/feed",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        2192
+      ],
+      "id": "d53622b7-f2ab-42cc-a540-fb6b5c5d5f60",
+      "name": "南华早报-中国politico",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://www.mofa.gov.tw/OpenData.aspx?SN=8ABA444B9AC1360F",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        2560
+      ],
+      "id": "5a20209b-e63f-45a8-9fbd-45c33575dc8a",
+      "name": "外交官网",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://www.ydn.com.tw/tw/Home/RSS.aspx?TID=4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        2736
+      ],
+      "id": "80bee0ea-c029-470b-8c27-4f943645a06a",
+      "name": "青年日报-要闻",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://www.ydn.com.tw/tw/Home/RSS.aspx?TID=2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        2944
+      ],
+      "id": "2fc0b086-c8e0-4382-b30d-8b1ca6206f65",
+      "name": "青年日报-军闻",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://mna.mnd.gov.tw/K2S/RSS",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        3136
+      ],
+      "id": "9436a7fa-c104-405d-bbf1-37bbdd329b27",
+      "name": "国防-官网",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        5840,
+        3024
+      ],
+      "id": "5a6983c5-4c06-4112-812d-48eab26a7275",
+      "name": "DeepSeek Chat Model2",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "336f0c98-d993-4420-ae3c-942f027e309c",
+              "leftValue": "={{ $json.time }}",
+              "rightValue": "={{ $('Date & Time').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        2864
+      ],
+      "id": "46cd309a-a7b9-4fcb-8149-c3f139ca23bc",
+      "name": "Filter5"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "time",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        2864
+      ],
+      "id": "af58c7e9-a8bc-4d3d-b3eb-7fe1bf22fd0a",
+      "name": "Sort14",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "/*\n * 这是一个计算两个字符串相似度的函数 (基于 Levenshtein 距离)\n * 您不需要修改这个函数\n */\nfunction getSimilarity(a, b) {\n  // 内部函数：计算 Levenshtein 距离\n  function getLevenshteinDistance(a, b) {\n    if (a.length === 0) return b.length;\n    if (b.length === 0) return a.length;\n    const matrix = [];\n    for (let i = 0; i <= b.length; i++) {\n      matrix[i] = [i];\n    }\n    for (let j = 0; j <= a.length; j++) {\n      matrix[0][j] = j;\n    }\n    for (let i = 1; i <= b.length; i++) {\n      for (let j = 1; j <= a.length; j++) {\n        if (b.charAt(i - 1) === a.charAt(j - 1)) {\n          matrix[i][j] = matrix[i - 1][j - 1];\n        } else {\n          matrix[i][j] = Math.min(\n            matrix[i - 1][j - 1] + 1, // substitution\n            matrix[i][j - 1] + 1,     // insertion\n            matrix[i - 1][j] + 1      // deletion\n          );\n        }\n      }\n    }\n    return matrix[b.length][a.length];\n  }\n  // --- 距离函数结束 ---\n\n  const distance = getLevenshteinDistance(a, b);\n  const maxLength = Math.max(a.length, b.length);\n  if (maxLength === 0) return 1;\n  return 1 - (distance / maxLength);\n}\n\n\n/*\n * --- n8n 去重主逻辑 (v1.0+ 语法) ---\n */\n\n// 1. 定义相似度阈值 (0.8 = 80%)\n// 您可以调整这个值 (0.0 到 1.0 之间)\nconst SIMILARITY_THRESHOLD = 0.65;\n\n// \"items\" 变量在 n8n Code 节点中是自动可用的\n// 它包含了所有输入的 items 数组\nconst filteredItems = []; // 存放最终不重复的新闻\n\n// 2. 遍历所有输入的新闻\n// (注意：这里直接使用 \"items\"，而不是 \"$items\")\nfor (const currentItem of items) {\n  let isDuplicate = false;\n  \n  // 3. 确保 'title' 存在，如果不存在则设为空字符串\n  // 这是为了防止 \"cannot read property 'title' of undefined\" 错误\n  const currentTitle = (currentItem.json && currentItem.json.title) ? currentItem.json.title : '';\n\n  // 4. 将当前新闻与 \"filteredItems\" 中已有的新闻逐个比较\n  for (const existingItem of filteredItems) {\n    const existingTitle = (existingItem.json && existingItem.json.title) ? existingItem.json.title : '';\n\n    // 计算两条标题的相似度\n    const similarity = getSimilarity(currentTitle, existingTitle);\n\n    // 5. 如果相似度超过阈值，则标记为重复\n    if (similarity >= SIMILARITY_THRESHOLD) {\n      isDuplicate = true;\n      // 已经是重复项，没必要再和 \"filteredItems\" 里的其他项比较了\n      break; \n    }\n  }\n\n  // 6. 如果当前新闻不重复，则将其加入最终列表\n  if (!isDuplicate) {\n    filteredItems.push(currentItem);\n  }\n}\n\n// 7. 返回去重后的 n8n item 列表\nreturn filteredItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        864,
+        2864
+      ],
+      "id": "a3360760-7810-477a-bdad-e806511e6006",
+      "name": "Code in JavaScript4",
+      "retryOnFail": true,
+      "waitBetweenTries": 1500
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        352,
+        2832
+      ],
+      "id": "422b68d2-71b2-46c0-aa41-338e13010d7b",
+      "name": "Merge4"
+    },
+    {
+      "parameters": {
+        "maxItems": 15
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        2864
+      ],
+      "id": "7a6ad979-0d49-41c0-a6b8-bf7905cec78b",
+      "name": "Limit6"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.time }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd HH:mm:ss（北京时间）",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1552,
+        2864
+      ],
+      "id": "eec93981-dfab-4f85-b137-49a5066a93ce",
+      "name": "datetime-format1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ffc667d9-c39c-42fb-bd16-c1af496878d9",
+              "name": "title",
+              "value": "={{ $('Limit6').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "08013a29-b01c-4c0a-ad4a-699302cd84e5",
+              "name": "Datetime",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "e2bcaad2-8bf1-46c9-a0a8-38c085a6e99d",
+              "name": "content",
+              "value": "={{ $('Limit6').item.json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "90023ef7-2505-44a6-ab6d-504f9d32b7bb",
+              "name": "url",
+              "value": "={{ $('Limit6').item.json.guid }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        2864
+      ],
+      "id": "5b86e06a-0546-479a-b7ad-79b73c8a11d0",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        4624,
+        2832
+      ],
+      "id": "ec189dbd-4895-49f5-88b2-bd83c774ebd9",
+      "name": "Merge5"
+    },
+    {
+      "parameters": {
+        "url": "https://news.ltn.com.tw/rss/politics.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        2384
+      ],
+      "id": "9ce68fd9-a5a9-436f-a4b1-071ccbe88b80",
+      "name": "自由时报-政治",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 23,
+              "triggerAtMinute": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        7600,
+        1008
+      ],
+      "id": "f3bccf34-f25b-4098-be87-22bf007d73b8",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=输入的新闻集如下：\n{{ $json.data }}",
+        "options": {
+          "systemMessage": "#身份：你是一个客观专业的新闻整理助手，可以根据输入的当日的新闻集进行整理分析并形成简报。\n------\n#任务：现在需要将输入的新闻集进行整理并输出新闻简报。该新闻集包含过去24小时内涉及台湾的多个热点新闻。\n------\n#具体任务：\n**1.整理内容：你需要根据过去24小时的新闻集合进行分析，梳理当日的主要热点事件并进行概括分类叙述。\n\n**2.重点分析：由于该新闻集合为当日多个时间段的新闻，可以根据24小时的内容变化，分析重点事件的趋势(注意**新闻的时间顺序**，确认事件**最新进展**)。\n\n**3.关键研判：基于新闻事件，研判是否有涉及影响中国国家安全的风险事件，主要涉及什么方面，有什么风险，有什么建议。\n\n------\n#输出要求：\n1、一级标题采用“一、……”“二、……”……的格式，二级标题为“（一）……”“（二）……”一级标题之间需要空一行。\n2、所有整理分析必须严格遵循输入新闻集的内容，在叙述中可以直接采用“据XXX报道”，或者引用输入新闻集的表述。\n3、确保逻辑清晰、语言整理\n4、简报总字数控制在2000字内，简报按照输入新闻集的时间将总标题命名XX月XX日热点且总标题前空一行。"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        9136,
+        1008
+      ],
+      "id": "614ba1ba-705b-4247-8b46-45b9c17b35be",
+      "name": "AI Agent3"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        8976,
+        1184
+      ],
+      "id": "8fe640fe-7e86-4844-9341-0ccca32ee75a",
+      "name": "DeepSeek Chat Model3",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "2873432864@qq.com",
+        "toEmail": "2873432864@qq.com,1635113186@qq.com",
+        "subject": "daysW",
+        "emailFormat": "text",
+        "text": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        10752,
+        576
+      ],
+      "id": "fe785ce9-e6a8-4ff9-aab1-fba4e7c411e9",
+      "name": "Send email1",
+      "webhookId": "a87b2b95-f272-464d-9922-57a0ab62aac2",
+      "credentials": {
+        "smtp": {
+          "id": "6ThVCVnPglWqUdmM",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtMinute": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        9712,
+        96
+      ],
+      "id": "275ad73c-6a2c-490a-b8ea-d7204d980f24",
+      "name": "Schedule Trigger2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=输入的新闻集如下：\n{{ $json.data }}",
+        "options": {
+          "systemMessage": "#身份：你是一个客观专业的新闻分析专家，可以根据输入的过去一周的涉及台湾热点新闻集进行整理分析并形成简报。\n------\n#任务：现在需要将输入的新闻集进行整理分析并输出新闻简报。该新闻集包含过去一周内涉及台湾的多个热点新闻。\n------\n#具体任务：\n**1.整理内容：你需要根据过去一周的新闻集合进行分析，梳理过去一周内的主要热点事件并进行简要分类概括叙述，做到重点突出、叙述流畅。\n\n**2.重点分析：由于该新闻集合为一周内的多个新闻，你需要根据一周内多个新闻的内容变化，分析重点事件的趋势。\n\n**3.关键研判：基于新闻事件，研判是否有涉及影响中国国家安全的风险事件，主要涉及什么方面，有什么风险，有什么建议。\n\n------\n#输出要求：\n1、一级标题采用“一、……”“二、……”……的格式，二级标题为“（一）……”“（二）……”一级标题之间需要空一行。\n2、所有整理分析必须严格遵循输入新闻集的内容，在叙述中可以直接采用“据XXX报道”“XX XX日报道称”，或者引用输入新闻集的表述。\n3、在引用新闻集中的报道时需要说明时间（据XXX XX月XX日报道）\n4、确保逻辑清晰、语言整理。\n5、输出简报内容字数控制在*2000字*以内。\n6、简报标题可以根据新闻集时间命名为“XX月XX日-XX月XX日热点热点”。"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        10816,
+        96
+      ],
+      "id": "5ecbd40c-2c83-4520-8b05-e5eeb5e853ad",
+      "name": "AI Agent4"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        10752,
+        320
+      ],
+      "id": "87714f8b-174f-4e8c-8634-7769e48469bd",
+      "name": "DeepSeek Chat Model4",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "google_news",
+        "q": "={{ $json.keywords }}",
+        "additionalFields": {
+          "gl": "tw"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        80,
+        320
+      ],
+      "id": "053000cd-aa15-4357-b8f7-31a4cd924e02",
+      "name": "Google_news search4",
+      "credentials": {
+        "serpApi": {
+          "id": "M2AfqmWR5TOSYhBY",
+          "name": "SerpApi account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "news_results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        320,
+        320
+      ],
+      "id": "7492cc05-2200-42b2-8733-1e2d7f9981e1",
+      "name": "Split Out4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8f4e91be-21b5-48b7-b602-42c403def8be",
+              "leftValue": "={{ $json.iso_date }}",
+              "rightValue": "={{ $('Date & Time2').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        944,
+        320
+      ],
+      "id": "535a5be6-8a75-458b-ac8a-bc3b3ed50c63",
+      "name": "Filter6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2eaddc03-c7f9-457e-8a5c-531a255b0a95",
+              "leftValue": "={{ $json.link.toBoolean() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        320
+      ],
+      "id": "45944f75-e1b6-44b7-b236-5725da687902",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1824,
+        256
+      ],
+      "id": "846a38a0-8e40-42c4-84ae-751605245dc3",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "operation": "google_news",
+        "q": "={{ $json.keywords }}",
+        "additionalFields": {
+          "gl": "tw"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        80,
+        144
+      ],
+      "id": "9da597e9-2524-4e88-b58c-4785c6833eb7",
+      "name": "Google_news search5",
+      "credentials": {
+        "serpApi": {
+          "id": "M2AfqmWR5TOSYhBY",
+          "name": "SerpApi account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "news_results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        320,
+        144
+      ],
+      "id": "82ec8705-e3ec-4ad0-aabe-1d01a5cb1845",
+      "name": "Split Out5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2eb683e3-d671-4876-8d6d-f90576878929",
+              "name": "keywords",
+              "value": "\"林飛帆\" OR \"陳椒華\" OR \"王定宇\" OR \"沈伯洋\" OR \"曹興誠\" OR \"劉世芳\" OR \"鄭英耀\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -112,
+        144
+      ],
+      "id": "0e2a1ff5-386c-4da3-ac0c-bbc5db2f4f65",
+      "name": "Edit Fields20"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8f4e91be-21b5-48b7-b602-42c403def8be",
+              "leftValue": "={{ $json.iso_date }}",
+              "rightValue": "={{ $('Date & Time2').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        944,
+        144
+      ],
+      "id": "96d40bee-0e13-4840-88b4-c8b6f345d224",
+      "name": "Filter7"
+    },
+    {
+      "parameters": {
+        "maxItems": 50
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        144
+      ],
+      "id": "f5211876-63f2-4229-a228-1de4c9cb8a4b",
+      "name": "Limit8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2eaddc03-c7f9-457e-8a5c-531a255b0a95",
+              "leftValue": "={{ $json.link.toBoolean() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        144
+      ],
+      "id": "4201ed0d-d434-487d-aef2-e539b669aee6",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "news_results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -48
+      ],
+      "id": "9157d520-3215-4aa0-83f1-c0699f84ae86",
+      "name": "Split Out6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "102e1eac-1abe-4e34-9379-91ecda988211",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "5d2a2b49-5343-4a69-8b1f-8195547b67ac",
+              "name": "iso_date",
+              "value": "={{ $json.iso_date }}",
+              "type": "string"
+            },
+            {
+              "id": "4555573e-943e-49a0-a658-ab366b985878",
+              "name": "link",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        736,
+        -48
+      ],
+      "id": "f1da07a9-59e8-4123-becf-b148350103f5",
+      "name": "Edit Fields21"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2eb683e3-d671-4876-8d6d-f90576878929",
+              "name": "keywords",
+              "value": "\"蘇貞昌\" OR \"遊錫堃\" OR \"吳釗燮\" OR \"蕭美琴\" OR \"顧立雄\" OR \"蔡其昌\" OR \"柯建銘\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -112,
+        -48
+      ],
+      "id": "415e8e0f-c431-4b21-b7a7-16519cac6d38",
+      "name": "Edit Fields22"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8f4e91be-21b5-48b7-b602-42c403def8be",
+              "leftValue": "={{ $json.iso_date }}",
+              "rightValue": "={{ $('Date & Time2').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        944,
+        -48
+      ],
+      "id": "d6e71623-99a3-4a2d-8ebd-f8eb7a362b0e",
+      "name": "Filter8"
+    },
+    {
+      "parameters": {
+        "maxItems": 50
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        -48
+      ],
+      "id": "9b6884dc-3fb4-4e1f-b2d3-c2617ee2c264",
+      "name": "Limit9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2eaddc03-c7f9-457e-8a5c-531a255b0a95",
+              "leftValue": "={{ $json.link.toBoolean() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        -48
+      ],
+      "id": "e91fe240-db4e-4496-be60-85e54220e654",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ef79f86a-2445-414f-b04e-ae53feb71303",
+              "leftValue": "={{ $json.link.toBoolean() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2192,
+        272
+      ],
+      "id": "ed53abc2-4e5f-4a84-be63-b113015a1922",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "jsCode": "/*\n * 这是一个计算两个字符串相似度的函数 (基于 Levenshtein 距离)\n * 您不需要修改这个函数\n */\nfunction getSimilarity(a, b) {\n  // 内部函数：计算 Levenshtein 距离\n  function getLevenshteinDistance(a, b) {\n    if (a.length === 0) return b.length;\n    if (b.length === 0) return a.length;\n    const matrix = [];\n    for (let i = 0; i <= b.length; i++) {\n      matrix[i] = [i];\n    }\n    for (let j = 0; j <= a.length; j++) {\n      matrix[0][j] = j;\n    }\n    for (let i = 1; i <= b.length; i++) {\n      for (let j = 1; j <= a.length; j++) {\n        if (b.charAt(i - 1) === a.charAt(j - 1)) {\n          matrix[i][j] = matrix[i - 1][j - 1];\n        } else {\n          matrix[i][j] = Math.min(\n            matrix[i - 1][j - 1] + 1, // substitution\n            matrix[i][j - 1] + 1,     // insertion\n            matrix[i - 1][j] + 1      // deletion\n          );\n        }\n      }\n    }\n    return matrix[b.length][a.length];\n  }\n  // --- 距离函数结束 ---\n\n  const distance = getLevenshteinDistance(a, b);\n  const maxLength = Math.max(a.length, b.length);\n  if (maxLength === 0) return 1;\n  return 1 - (distance / maxLength);\n}\n\n\n/*\n * --- n8n 去重主逻辑 (v1.0+ 语法) ---\n */\n\n// 1. 定义相似度阈值 (0.8 = 80%)\n// 您可以调整这个值 (0.0 到 1.0 之间)\nconst SIMILARITY_THRESHOLD = 0.6;\n\n// \"items\" 变量在 n8n Code 节点中是自动可用的\n// 它包含了所有输入的 items 数组\nconst filteredItems = []; // 存放最终不重复的新闻\n\n// 2. 遍历所有输入的新闻\n// (注意：这里直接使用 \"items\"，而不是 \"$items\")\nfor (const currentItem of items) {\n  let isDuplicate = false;\n  \n  // 3. 确保 'title' 存在，如果不存在则设为空字符串\n  // 这是为了防止 \"cannot read property 'title' of undefined\" 错误\n  const currentTitle = (currentItem.json && currentItem.json.title) ? currentItem.json.title : '';\n\n  // 4. 将当前新闻与 \"filteredItems\" 中已有的新闻逐个比较\n  for (const existingItem of filteredItems) {\n    const existingTitle = (existingItem.json && existingItem.json.title) ? existingItem.json.title : '';\n\n    // 计算两条标题的相似度\n    const similarity = getSimilarity(currentTitle, existingTitle);\n\n    // 5. 如果相似度超过阈值，则标记为重复\n    if (similarity >= SIMILARITY_THRESHOLD) {\n      isDuplicate = true;\n      // 已经是重复项，没必要再和 \"filteredItems\" 里的其他项比较了\n      break; \n    }\n  }\n\n  // 6. 如果当前新闻不重复，则将其加入最终列表\n  if (!isDuplicate) {\n    filteredItems.push(currentItem);\n  }\n}\n\n// 7. 返回去重后的 n8n item 列表\nreturn filteredItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2512,
+        272
+      ],
+      "id": "86f36fd8-3e13-4470-b6bd-14f4107e10ad",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "maxItems": 50
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        3056,
+        272
+      ],
+      "id": "0b046105-e774-44ed-a8ca-dc25a9adabc7",
+      "name": "Limit10"
+    },
+    {
+      "parameters": {
+        "operation": "google_news",
+        "q": "={{ $json.keywords }}",
+        "additionalFields": {
+          "gl": "tw"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -48
+      ],
+      "id": "a08efac0-6ca1-4542-810d-bffe33ef6c68",
+      "name": "Google_news search6",
+      "credentials": {
+        "serpApi": {
+          "id": "M2AfqmWR5TOSYhBY",
+          "name": "SerpApi account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.timestamp }}",
+        "timeUnit": "hours",
+        "duration": 5,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -848,
+        320
+      ],
+      "id": "226c0a93-3938-43d3-93c1-537bc36329a8",
+      "name": "Date & Time2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "102e1eac-1abe-4e34-9379-91ecda988211",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "5d2a2b49-5343-4a69-8b1f-8195547b67ac",
+              "name": "iso_date",
+              "value": "={{ $json.iso_date }}",
+              "type": "string"
+            },
+            {
+              "id": "4555573e-943e-49a0-a658-ab366b985878",
+              "name": "link",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        736,
+        320
+      ],
+      "id": "0d2da55f-fbe0-4d22-bf17-3bb3b5067173",
+      "name": "Edit Fields23"
+    },
+    {
+      "parameters": {
+        "maxItems": 50
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        320
+      ],
+      "id": "1cdc72f2-205c-40ca-8ac7-1ff3e9717d8c",
+      "name": "Limit11"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "iso_date",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        2752,
+        272
+      ],
+      "id": "afa088ba-c885-446c-97d1-f785cc6ba4e8",
+      "name": "Sort15"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "102e1eac-1abe-4e34-9379-91ecda988211",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "5d2a2b49-5343-4a69-8b1f-8195547b67ac",
+              "name": "iso_date",
+              "value": "={{ $json.iso_date }}",
+              "type": "string"
+            },
+            {
+              "id": "4555573e-943e-49a0-a658-ab366b985878",
+              "name": "link",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        736,
+        144
+      ],
+      "id": "03c31c99-47b2-413c-8053-e1a554d9ffb7",
+      "name": "Edit Fields24"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "iso_date",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        528,
+        -48
+      ],
+      "id": "318c9f87-c54b-4e38-8722-34abf668bb5d",
+      "name": "Sort16"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.link }}",
+        "options": {
+          "outputFormat": "",
+          "targetSelector": "article, main, .post-content, #content, .article-body",
+          "excludeSelector": "nav, header, footer, aside, .sidebar, .menu, .ads, .related, .comments, script, style, .social, .share"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.jinaAi",
+      "typeVersion": 1,
+      "position": [
+        3696,
+        432
+      ],
+      "id": "5770e4b3-0460-42c5-85ee-3b5e9f8b50c2",
+      "name": "Read URL content1",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "jinaAiApi": {
+          "id": "nkZgjmxEqMJqafIH",
+          "name": "Jina AI account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3424,
+        272
+      ],
+      "id": "35588157-8b49-45fa-86de-0595e5164474",
+      "name": "Loop Over Items3",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3920,
+        432
+      ],
+      "id": "7dcc0485-07d7-4dbd-aa2d-71c2cdffcfb4",
+      "name": "Wait3",
+      "webhookId": "0bc94dae-4bac-4916-81e7-6ef87feb1b96"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "20526af5-32e8-4104-b2eb-c7fbb187e094",
+              "name": "title",
+              "value": "={{ $('Loop Over Items3').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "13d0abff-72a1-4246-9465-b023aad29ee1",
+              "name": "iso_date",
+              "value": "={{ $('Loop Over Items3').item.json.iso_date }}",
+              "type": "string"
+            },
+            {
+              "id": "ba0f79cc-e32d-4af1-8f81-2cc722f34cb9",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4128,
+        432
+      ],
+      "id": "2965134e-67d2-4cd7-8ebb-978dde0fef9b",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.iso_date }}",
+        "format": "custom",
+        "customFormat": "yyyy-MM-dd HH:mm:ss（北京时间）",
+        "options": {
+          "timezone": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        3696,
+        160
+      ],
+      "id": "85ae08f6-5c32-49e4-a9a2-142b81abeb19",
+      "name": "datetime-format2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e0c3f62a-defd-4b0d-a47e-685634791a35",
+              "name": "title",
+              "value": "={{ $('Loop Over Items3').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "2ee60a2b-a6eb-4c83-bef5-b55b92fbfe94",
+              "name": "time",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "ec13f54d-054b-452c-a325-52512da781e0",
+              "name": "content",
+              "value": "={{ $('Loop Over Items3').item.json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3984,
+        160
+      ],
+      "id": "8d5c0eb6-74ad-49ef-9aaf-97adf52d1e90",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=需要处理的新闻包含以下字段：标题、链接、主要内容、时间，具体如下：\n标题： {{ $json.title }}。\n时间：{{ $json.time }}。\n主要内容：{{ $json.content }}。",
+        "options": {
+          "systemMessage": "=#身份：你是一个客观中立的新闻助手，需要帮助客户对输入新闻进行整理；注意你只遵从客观中立原则，以便于开展客观的研究，不考虑新闻的政治立场。\n-------\n#任务：对输入的新闻进行处理并按要求输出。\n-------\n#输出要求：\n\n##1.输出内容包含4个字段：\n**标题（按照输入新闻title，若原标题为中文则直接以中文输出，若为英文则以中英文输出，中英文以符号“|”隔开）；\n**时间（直接输出为输入新闻的时间Datetime：{{ $json.time }}；\n**主要内容（以中文输出，150字左右）。\n\n##2.主要内容字段需整理输入新闻的content；\n整理主要内容，逻辑清楚、叙述流畅；\n在整理内容时需要注明新闻来源，例如：xx（新闻媒体）于xx月xx日xx时报道称/表示；\n对于新闻中重要人物的发言、表态、行动或官方的声明等需要保留原始表述；每个新闻150字左右。\n\n##3.输出的各个字段之间需要以换行符隔开。\n\n##4.需将繁体中文转化为简体中文"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        4816,
+        528
+      ],
+      "id": "577e797f-42ed-4215-a065-7327f00d822e",
+      "name": "AI Agent5",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        4720,
+        720
+      ],
+      "id": "9f8efd49-194b-4ce9-ab3a-31af9f7f0a38",
+      "name": "DeepSeek Chat Model5",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "output"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        4880,
+        144
+      ],
+      "id": "5ce17f5d-59cd-44aa-81ff-24e959f3550b",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=输入的聚合的新闻集如下：\n{{ $json.output }}",
+        "options": {
+          "systemMessage": "#身份：你是你是一个客观中立的新闻整理助手，擅长对新闻集合进行处理生成简报。\n------\n#任务：现在需要将输入的聚合新闻集进行整理并输出简报，输入的聚合新闻集主要内容是关于台湾的重点人物的新闻报道，你需要根据新闻集内容按照涉及人物进行整理。\n------\n#具体任务：\n**1.删除无效内容：删除体育、娱乐、生活、食品等新闻，删除无有效内容（例如新闻内容显示404，无具体信息等）。\n\n**2.对新闻进行分类整理：根据新闻内容将新闻进行分类，按照新闻集中涉及的人员进行分类表述，说明某个人物的活动、言论、发言、表态、动向等，用一段话说明即可，但需要包括新闻来源（xx报道）、时间（xx月xx日）、人物的动向、发言、表态等内容。\n\n------\n#输出格式要求：\n1、一级标题采用“（一）……”“（二）……”……的格式，即主要人物都按照一级标题进行分类\n2、一级标题间的新闻之间需要空一行。\n3、整个新闻简报需要按照以下格式命名标题：“**xx月xx日重点关注人员情况**”，时间按照输入新闻集时间进行设定，标题与主要内容间需要空一行\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        5600,
+        144
+      ],
+      "id": "647fa683-c3b0-4457-ac02-847142d58f33",
+      "name": "AI Agent6"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        4528,
+        160
+      ],
+      "id": "f4fed343-02fd-45d0-9979-d6bca12f6e46",
+      "name": "Loop Over Items4"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5200,
+        704
+      ],
+      "id": "fc0cc5f1-35ce-48f0-97c9-997a587b81a2",
+      "name": "Wait4",
+      "webhookId": "6db50fc3-d5eb-4ac6-b515-4cf52f2728a0"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        5424,
+        352
+      ],
+      "id": "9d2eae25-20bd-4ec1-9702-e3740c4de89f",
+      "name": "DeepSeek Chat Model6",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "3O07t8RbInRvDu6q",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        7088,
+        1504
+      ],
+      "id": "c1454e64-c7e1-43ab-8f23-91457d2c6672",
+      "name": "Merge6"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "output"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        7360,
+        1504
+      ],
+      "id": "de261d74-a8f6-44e1-8585-9c3135020ebc",
+      "name": "Aggregate3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b58cb4d3-a5d7-4dce-8674-97d12076df2e",
+              "name": "emails",
+              "value": "[\"2873432864@qq.com\",\"1635113186@qq.com\",\"chenchanglin1997@163.com\",\"tw92gongshi@163.com\",\"tw92gongshi1@163.com\",\"tw92gongshi2@163.com\"]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7984,
+        1696
+      ],
+      "id": "2ff0567e-a606-453f-9362-0c707d8146ec",
+      "name": "Edit Fields51"
+    },
+    {
+      "parameters": {
+        "fromEmail": "2873432864@qq.com",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "WW",
+        "emailFormat": "text",
+        "text": "={{ $('Aggregate3').item.json.output.join('\\n\\n') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        9584,
+        1744
+      ],
+      "id": "b9266791-0027-4500-a1c6-ff8332c42895",
+      "name": "Send email3",
+      "webhookId": "0c98f92f-96bd-4f3d-bc72-e129114bd2cd",
+      "credentials": {
+        "smtp": {
+          "id": "6ThVCVnPglWqUdmM",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        9312,
+        1696
+      ],
+      "id": "442a2a42-0393-45ab-b1c7-e83c32a12861",
+      "name": "Loop Over Items6"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        9792,
+        1744
+      ],
+      "id": "9ff4fc63-6146-4755-a796-4376a7ee6b24",
+      "name": "Wait5",
+      "webhookId": "d970bbba-4338-44c4-9729-c93ee72280d4"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "emails",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        8416,
+        1696
+      ],
+      "id": "2a12958e-aa6f-4a78-a852-0cb8b432fa20",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        9520,
+        1600
+      ],
+      "id": "441a64f8-2fcc-455f-a06e-2b6eee42cc41",
+      "name": "Wait6",
+      "webhookId": "b0e33323-ec37-4599-bc00-ee056306f7db"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b58cb4d3-a5d7-4dce-8674-97d12076df2e",
+              "name": "emails",
+              "value": "[\"2873432864@qq.com\",\"1635113186@qq.com\",\"chenchanglin1997@163.com\",\"tw92gongshi@163.com\",\"tw92gongshi1@163.com\",\"tw92gongshi2@163.com\"]",
+              "type": "array"
+            },
+            {
+              "id": "6a0a4bf2-002a-46b7-bb2a-a330b32e8753",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        9520,
+        832
+      ],
+      "id": "14cb9b19-73cb-4780-9247-870a2a4278c1",
+      "name": "Edit Fields52"
+    },
+    {
+      "parameters": {
+        "fromEmail": "2873432864@qq.com",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "WW",
+        "emailFormat": "text",
+        "text": "={{ $('AI Agent3').item.json.output }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        10464,
+        752
+      ],
+      "id": "0c80e779-ea34-4e80-a663-f5913575d095",
+      "name": "Send email4",
+      "webhookId": "0c98f92f-96bd-4f3d-bc72-e129114bd2cd",
+      "credentials": {
+        "smtp": {
+          "id": "6ThVCVnPglWqUdmM",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        10192,
+        736
+      ],
+      "id": "5e6fc572-571d-4659-a213-8841e3b28ac9",
+      "name": "Loop Over Items7"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        10672,
+        752
+      ],
+      "id": "e079a758-654a-4d66-b721-9a999f7c0f54",
+      "name": "Wait7",
+      "webhookId": "d970bbba-4338-44c4-9729-c93ee72280d4"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "emails",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        9776,
+        832
+      ],
+      "id": "931ba3e2-259b-4019-ae7b-fc3e3d42cecf",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        10512,
+        528
+      ],
+      "id": "71d91505-a95a-4949-9297-0bd1429b1a11",
+      "name": "Wait8",
+      "webhookId": "b0e33323-ec37-4599-bc00-ee056306f7db"
+    },
+    {
+      "parameters": {
+        "fromEmail": "2873432864@qq.com",
+        "toEmail": "2873432864@qq.com,1635113186@qq.com",
+        "subject": "daysW",
+        "emailFormat": "text",
+        "text": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        12304,
+        -64
+      ],
+      "id": "a77ebe2d-408a-47ae-a2fd-6b2e00e36af5",
+      "name": "Send email5",
+      "webhookId": "a87b2b95-f272-464d-9922-57a0ab62aac2",
+      "credentials": {
+        "smtp": {
+          "id": "6ThVCVnPglWqUdmM",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b58cb4d3-a5d7-4dce-8674-97d12076df2e",
+              "name": "emails",
+              "value": "[\"2873432864@qq.com\",\"1635113186@qq.com\",\"chenchanglin1997@163.com\",\"tw92gongshi@163.com\",\"tw92gongshi1@163.com\",\"tw92gongshi2@163.com\"]",
+              "type": "array"
+            },
+            {
+              "id": "6a0a4bf2-002a-46b7-bb2a-a330b32e8753",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        11200,
+        96
+      ],
+      "id": "fba2be21-baea-47dc-b3c9-9b644744993a",
+      "name": "Edit Fields53"
+    },
+    {
+      "parameters": {
+        "fromEmail": "2873432864@qq.com",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "WW",
+        "emailFormat": "text",
+        "text": "={{ $('AI Agent4').item.json.output }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        12016,
+        112
+      ],
+      "id": "52d01326-a771-44c7-b757-27448938b2b1",
+      "name": "Send email6",
+      "webhookId": "0c98f92f-96bd-4f3d-bc72-e129114bd2cd",
+      "credentials": {
+        "smtp": {
+          "id": "6ThVCVnPglWqUdmM",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        11744,
+        96
+      ],
+      "id": "32475f18-a3af-4b5e-9d3a-13496ebe0a78",
+      "name": "Loop Over Items8"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        12224,
+        112
+      ],
+      "id": "463220ca-d3a9-46a9-a192-918b15c087bc",
+      "name": "Wait9",
+      "webhookId": "d970bbba-4338-44c4-9729-c93ee72280d4"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "emails",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        11456,
+        96
+      ],
+      "id": "12880746-1da9-4f26-9da6-d4882abb47d5",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        12064,
+        -112
+      ],
+      "id": "7d57c6bb-6cd6-4a34-a46f-a8a6b106a529",
+      "name": "Wait10",
+      "webhookId": "b0e33323-ec37-4599-bc00-ee056306f7db"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2eb683e3-d671-4876-8d6d-f90576878929",
+              "name": "keywords",
+              "value": "\"吳思瑤\" OR \"黃捷\" OR \"林達\" OR \"林俊言\" OR \"林俊廷\" OR \"曹興誠\" OR \"史書華\" OR \"溫子渝\" OR \"陳柏源\" OR \"陳舒怡\"",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -112,
+        320
+      ],
+      "id": "036376b0-097c-4e1d-b546-5929ceeb30dd",
+      "name": "people"
+    },
+    {
+      "parameters": {
+        "jsCode": "const batch = $input.all().map(item => {\n  const json = item.json;\n  const output = json.output || {};\n  const batchId = new Date().toISOString().slice(0, 16).replace('T', '-');\n  return {\n    title: json.title || output['标题'] || '',\n    time: json.time || output['时间'] || '',\n    content: json.content || output['内容摘要'] || '',\n    link: json.guid || output['链接'] || '',\n    source: '',\n    ai_score: output['按客户需求进行赋分'] ?? null,\n    ai_reason: output['判断理由'] || '',\n    batch_id: batchId,\n  };\n});\nreturn [{ json: batch }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2100,
+        2000
+      ],
+      "id": "auto-code-batch-news",
+      "name": "Transform News Batch"
+    },
+    {
+      "parameters": {
+        "url": "http://backend:3456/api/news/batch",
+        "method": "POST",
+        "sendBody": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2400,
+        2000
+      ],
+      "id": "auto-http-news-batch",
+      "name": "Push News Batch",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "http://backend:3456/api/brief",
+        "method": "POST",
+        "sendBody": true,
+        "options": {},
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "type",
+              "value": "batch"
+            },
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.output }}"
+            },
+            {
+              "name": "date",
+              "value": "={{ $now.toFormat(\"yyyy-MM-dd\") }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6000,
+        2736
+      ],
+      "id": "auto-http-push-brief",
+      "name": "Push Brief",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=http://backend:3456/api/accumulated?date={{ $now.toFormat(\"yyyy-MM-dd\") }}&type=day",
+        "method": "GET",
+        "sendBody": false,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        8000,
+        1008
+      ],
+      "id": "auto-http-get-daily",
+      "name": "GET Daily Data",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const news = $json.news;\nif (!news || news.length === 0) {\n  return [{ json: { data: '今日无新闻数据' } }];\n}\nlet output = '';\nfor (const item of news) {\n  output += '标题：' + (item.title || '') + '\\n';\n  output += '时间：' + (item.time || '') + '\\n';\n  output += '来源：' + (item.source || '') + '\\n';\n  output += '评分：' + (item.ai_score ?? '') + '\\n';\n  output += '内容：' + (item.content || item.summary || '') + '\\n';\n  output += '链接：' + (item.link || '') + '\\n\\n';\n}\nreturn [{ json: { data: output } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8400,
+        1008
+      ],
+      "id": "auto-code-format-daily",
+      "name": "Format Daily Data"
+    },
+    {
+      "parameters": {
+        "url": "=http://backend:3456/api/accumulated?date={{ $now.startOf('week').toFormat(\"yyyy-MM-dd\") }}&endDate={{ $now.endOf('week').toFormat(\"yyyy-MM-dd\") }}&type=week",
+        "method": "GET",
+        "sendBody": false,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10000,
+        96
+      ],
+      "id": "auto-http-get-weekly",
+      "name": "GET Weekly Data",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const news = $json.news;\nif (!news || news.length === 0) {\n  return [{ json: { data: '本周无新闻数据' } }];\n}\nlet output = '';\nfor (const item of news) {\n  output += '标题：' + (item.title || '') + '\\n';\n  output += '时间：' + (item.time || '') + '\\n';\n  output += '来源：' + (item.source || '') + '\\n';\n  output += '评分：' + (item.ai_score ?? '') + '\\n';\n  output += '内容：' + (item.content || item.summary || '') + '\\n';\n  output += '链接：' + (item.link || '') + '\\n\\n';\n}\nreturn [{ json: { data: output } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10400,
+        96
+      ],
+      "id": "auto-code-format-weekly",
+      "name": "Format Weekly Data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "自由时报-政治",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "外交官网",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "国防-官网",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "中央社-政治",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "中时新闻-政治",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "法广-台海",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "中央社-科技",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Sort2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Sort3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Sort4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Sort5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Sort6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read URL content": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Sort1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Push Brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Transform News Batch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields9": {
+      "main": [
+        [
+          {
+            "node": "Sort7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Sort4": {
+      "main": [
+        [
+          {
+            "node": "Limit5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Sort6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Sort7": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields11": {
+      "main": [
+        [
+          {
+            "node": "Sort8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort8": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields15": {
+      "main": [
+        [
+          {
+            "node": "Sort9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort9": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [
+          {
+            "node": "Jina ai的结果",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read URL content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields16": {
+      "main": [
+        [
+          {
+            "node": "Sort10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort10": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields17": {
+      "main": [
+        [
+          {
+            "node": "Sort11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort11": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields18": {
+      "main": [
+        [
+          {
+            "node": "Sort12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort12": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Jina ai的结果": {
+      "main": [
+        [
+          {
+            "node": "datetime-format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "datetime-format": {
+      "main": [
+        [
+          {
+            "node": "jina-ai-time-format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "jina-ai-time-format": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "中央社-政治": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "中时新闻-政治": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "联合新闻": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "法广-台海": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "中央社-科技": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "南华早报-中国politico": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "外交官网": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "青年日报-要闻": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "青年日报-军闻": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "国防-官网": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter5": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort14": {
+      "main": [
+        [
+          {
+            "node": "Limit6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "Sort14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Filter5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit6": {
+      "main": [
+        [
+          {
+            "node": "datetime-format1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "datetime-format1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "自由时报-政治": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields52",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields53",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google_news search4": {
+      "main": [
+        [
+          {
+            "node": "Split Out4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields23",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter6": {
+      "main": [
+        [
+          {
+            "node": "Limit11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google_news search5": {
+      "main": [
+        [
+          {
+            "node": "Split Out5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields24",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields20": {
+      "main": [
+        [
+          {
+            "node": "Google_news search5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter7": {
+      "main": [
+        [
+          {
+            "node": "Limit8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit8": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Split Out6": {
+      "main": [
+        [
+          {
+            "node": "Sort16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields21": {
+      "main": [
+        [
+          {
+            "node": "Filter8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields22": {
+      "main": [
+        [
+          {
+            "node": "Google_news search6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter8": {
+      "main": [
+        [
+          {
+            "node": "Limit9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit9": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Sort15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit10": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google_news search6": {
+      "main": [
+        [
+          {
+            "node": "Split Out6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields20",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields22",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "people",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields23": {
+      "main": [
+        [
+          {
+            "node": "Filter6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit11": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort15": {
+      "main": [
+        [
+          {
+            "node": "Limit10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields24": {
+      "main": [
+        [
+          {
+            "node": "Filter7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort16": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields21",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read URL content1": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [
+          {
+            "node": "datetime-format2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read URL content1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "datetime-format2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent5": {
+      "main": [
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent5",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent6": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items4": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent6",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields51",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields51": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email3": {
+      "main": [
+        [
+          {
+            "node": "Wait5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items6": {
+      "main": [
+        [
+          {
+            "node": "Wait6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send email3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields52": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email4": {
+      "main": [
+        [
+          {
+            "node": "Wait7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items7": {
+      "main": [
+        [
+          {
+            "node": "Wait8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send email4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields53": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email6": {
+      "main": [
+        [
+          {
+            "node": "Wait9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items8": {
+      "main": [
+        [
+          {
+            "node": "Wait10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send email6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait9": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "people": {
+      "main": [
+        [
+          {
+            "node": "Google_news search4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "GET Daily Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET Daily Data": {
+      "main": [
+        [
+          {
+            "node": "Format Daily Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Daily Data": {
+      "main": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "GET Weekly Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET Weekly Data": {
+      "main": [
+        [
+          {
+            "node": "Format Weekly Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Weekly Data": {
+      "main": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform News Batch": {
+      "main": [
+        [
+          {
+            "node": "Push News Batch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Push News Batch": {
+      "main": [
+        []
+      ]
+    },
+    "Push Brief": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "c842fde9-b4de-4dcb-a93a-3256e6c3051d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "900bc909c4e7c89f421c730bfb6dad17e143bf9868fcdecdf7f20e72019ff870"
+  },
+  "id": "iVK0cJV0UPZjuH73",
+  "tags": []
+}

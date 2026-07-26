@@ -1,0 +1,57 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_SECURE_COOKIE=false
+      - EXECUTIONS_DATA_SAVE_ON_ERROR=all
+      - EXECUTIONS_DATA_SAVE_ON_SUCCESS=none
+      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true
+      - EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS=false
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=168
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+    networks:
+      - news-net
+
+  backend:
+    build: ./backend
+    container_name: news-backend
+    ports:
+      - "3456:3456"
+    environment:
+      - DB_DIR=/data
+      - PORT=3456
+    volumes:
+      - news_data:/data
+    restart: unless-stopped
+    networks:
+      - news-net
+
+  frontend:
+    build: ./frontend
+    container_name: news-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    networks:
+      - news-net
+    depends_on:
+      - backend
+
+volumes:
+  n8n_data:
+    external: true
+  news_data:
+
+networks:
+  news-net:
+    driver: bridge

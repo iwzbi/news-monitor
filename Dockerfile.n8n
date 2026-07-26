@@ -1,0 +1,7 @@
+FROM n8nio/n8n:2.18.0
+USER root
+RUN cd /usr/local/lib/node_modules/n8n && \
+    npm install n8n-nodes-serpapi 2>&1 && \
+    chown -R node:node /usr/local/lib/node_modules/n8n/node_modules/n8n-nodes-serpapi
+USER node
+ENV N8N_COMMUNITY_PACKAGES_ALLOW_TOOLTIP=true
