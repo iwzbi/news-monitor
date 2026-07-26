@@ -62,5 +62,6 @@ try { db.exec(`ALTER TABLE news ADD COLUMN datetime_display TEXT`); } catch {}
 try { db.exec(`CREATE INDEX IF NOT EXISTS idx_news_category ON news(category)`); } catch {}
 try { db.exec(`CREATE INDEX IF NOT EXISTS idx_news_region ON news(region)`); } catch {}
 try { db.exec(`CREATE INDEX IF NOT EXISTS idx_news_country ON news(country)`); } catch {}
+try { db.exec(`ALTER TABLE news ADD COLUMN image_url TEXT`); } catch {}
 
 export default db
