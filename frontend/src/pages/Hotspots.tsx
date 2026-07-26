@@ -272,7 +272,7 @@ export default function Hotspots() {
                       {/* Image or blue dot */}
                       {item.image_url ? (
                           <img
-                            src={item.image_url}
+                            src={`https://images.weserv.nl/?url=${encodeURIComponent(item.image_url)}&w=200&h=140&fit=cover&output=webp`}
                             alt=""
                             className="w-20 h-14 object-cover rounded flex-shrink-0"
                             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
