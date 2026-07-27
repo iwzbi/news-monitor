@@ -15,7 +15,6 @@ export interface NewsItem {
   full_content: string | null
   summary: string | null
   batch_id: string | null
-  image_url?: string | null
   created_at: string
 }
 

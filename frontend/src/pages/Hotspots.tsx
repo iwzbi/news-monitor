@@ -269,19 +269,8 @@ export default function Hotspots() {
                       className="bg-white rounded-lg border p-4 hover:shadow-sm transition-shadow cursor-pointer flex items-start gap-3"
                       onClick={() => setSelectedItem(item)}
                     >
-                      {/* Image or blue dot */}
-                      {item.image_url ? (
-                          <img
-                            src={`https://images.weserv.nl/?url=${encodeURIComponent(item.image_url)}&w=200&h=140&fit=cover&output=webp`}
-                            alt=""
-                            className="w-20 h-14 object-cover rounded flex-shrink-0"
-                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                          />
-                        ) : (
-                          <div className="w-20 h-14 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center text-gray-400 text-xs">
-                            无图
-                          </div>
-                        )}
+                      {/* Blue dot */}
+                      <div className="w-2.5 h-2.5 bg-blue-500 rounded-full mt-2 shrink-0" />
 
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1.5">
