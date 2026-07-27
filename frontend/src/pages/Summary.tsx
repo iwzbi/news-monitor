@@ -21,8 +21,8 @@ export default function Summary() {
   useEffect(() => {
     api.briefs.dates().then(dates => {
       setAvailableDates(dates)
-      if (dates.length > 0 && !selectedDate) {
-        setSelectedDate(dates[0])
+      if (!selectedDate) {
+        setSelectedDate('all')
       }
     })
   }, [])
@@ -30,9 +30,11 @@ export default function Summary() {
   useEffect(() => {
     if (!selectedDate) return
     setLoading(true)
+    const type = activeTab === 'daily' ? 'daily' : activeTab === 'weekly' ? 'weekly' : 'batch'
+    const dateParam = selectedDate === 'all' ? undefined : selectedDate
     Promise.all([
       api.dashboard.overview(),
-      api.briefs.list(activeTab === 'daily' ? 'daily' : activeTab === 'weekly' ? 'weekly' : 'batch', selectedDate, 50),
+      api.briefs.list(type, dateParam, 100),
     ]).then(([ov, br]) => {
       setOverview(ov)
       setBriefs(br)
@@ -108,9 +110,37 @@ export default function Summary() {
             ))}
           </div>
 
+          {/* Date Selector */}
+          <div className="bg-white border-b px-6 py-2.5 flex items-center gap-2 shrink-0">
+            <span className="text-xs text-gray-500 mr-2">日期：</span>
+            <button
+              className={`px-3 py-1 rounded-full text-xs border transition-colors ${
+                selectedDate === 'all'
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
+              }`}
+              onClick={() => setSelectedDate('all')}
+            >
+              全部
+            </button>
+            {availableDates.map(d => (
+              <button
+                key={d}
+                className={`px-3 py-1 rounded-full text-xs border transition-colors ${
+                  selectedDate === d
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
+                }`}
+                onClick={() => setSelectedDate(d)}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
+
           {/* Date Header */}
           <div className="px-6 py-3 shrink-0">
-            <span className="text-sm text-gray-500">{selectedDate || '—'} (北京时间)</span>
+            <span className="text-sm text-gray-500">{selectedDate === 'all' ? '全部日期' : selectedDate || '—'} (北京时间)</span>
           </div>
 
           {/* Briefs Content */}
