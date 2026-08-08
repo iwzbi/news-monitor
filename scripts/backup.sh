@@ -1,5 +1,5 @@
 #!/bin/bash
-# Backup news database and n8n data
+# Backup news database and n8n data (all workflows)
 # Usage: ./scripts/backup.sh [output_dir]
 
 set -e
@@ -11,24 +11,36 @@ echo "=== News Platform Backup ==="
 echo "Output: $OUTPUT_DIR"
 
 # Backup SQLite database
-echo "[1/3] Backing up news database..."
+echo "[1/4] Backing up news database..."
 docker exec news-backend cp /data/news.db /data/news.db.bak
 docker cp news-backend:/data/news.db.bak "$OUTPUT_DIR/news.db"
 echo "  -> news.db backed up"
 
-# Backup n8n data
-echo "[2/3] Backing up n8n data..."
-docker exec n8n tar czf /tmp/n8n_backup.tar.gz -C /home/node .n8n 2>/dev/null || true
-docker cp n8n:/tmp/n8n_backup.tar.gz "$OUTPUT_DIR/n8n_backup.tar.gz" 2>/dev/null || echo "  -> n8n backup skipped (n8n not running)"
+# Backup n8n database (contains all workflows, credentials, executions)
+echo "[2/4] Backing up n8n database..."
+docker exec n8n cp /home/node/.n8n/database.sqlite /home/node/.n8n/database.sqlite.bak
+docker cp n8n:/home/node/.n8n/database.sqlite.bak "$OUTPUT_DIR/n8n_database.sqlite"
+echo "  -> n8n database backed up"
 
-# Export workflow
-echo "[3/3] Exporting n8n workflow..."
-docker cp n8n:/home/node/.n8n/config "$OUTPUT_DIR/n8n_config" 2>/dev/null || true
+# Export all workflows as JSON (for easy import)
+echo "[3/4] Exporting all n8n workflows..."
+docker exec n8n n8n export:workflow --all --output=/tmp/workflows_export.json 2>/dev/null
+docker cp n8n:/tmp/workflows_export.json "$OUTPUT_DIR/workflows_all.json"
+WORKFLOW_COUNT=$(python3 -c "import json; print(len(json.load(open('$OUTPUT_DIR/workflows_all.json'))))" 2>/dev/null || echo "?")
+echo "  -> Exported $WORKFLOW_COUNT workflows"
+
+# Export credentials (if any)
+echo "[4/4] Exporting n8n credentials..."
+docker exec n8n n8n export:credentials --all --decrypted --output=/tmp/credentials_export.json 2>/dev/null || true
+docker cp n8n:/tmp/credentials_export.json "$OUTPUT_DIR/credentials_all.json" 2>/dev/null || echo "  -> No credentials to export"
 
 echo ""
 echo "=== Backup Complete ==="
 echo "Files:"
 ls -lh "$OUTPUT_DIR"
+echo ""
+echo "Workflows included:"
+python3 -c "import json; [print(f'  - {w.get(\"name\",\"unnamed\")}') for w in json.load(open('$OUTPUT_DIR/workflows_all.json'))]" 2>/dev/null || true
 echo ""
 echo "To restore on new server:"
 echo "  1. Copy $OUTPUT_DIR to new server"
