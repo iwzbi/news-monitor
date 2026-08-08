@@ -38,12 +38,64 @@ docker compose up -d --build
 4. 配置 Webhook 节点的 URL 为 `http://backend:3456/api/news/batch`
 5. 激活工作流
 
-### 4. 导入工作流（命令行方式）
+## 服务器迁移
+
+### 步骤一：在旧服务器备份
 
 ```bash
-# 通过 n8n API 导入（需先在 UI 中获取 API Key）
-node update-workflow.js
+# 在旧服务器执行
+./scripts/backup.sh ./backup_data
 ```
+
+备份内容：
+- `news.db` — SQLite 数据库（新闻 + 简报）
+- `n8n_backup.tar.gz` — n8n 配置和工作流
+
+### 步骤二：传输到新服务器
+
+```bash
+# 将整个项目目录传到新服务器
+scp -r ./news-monitor user@new_server:/path/to/
+# 或只传备份文件
+scp -r ./backup_data user@new_server:/path/to/news-monitor/
+```
+
+### 步骤三：在新服务器恢复
+
+```bash
+# 1. 进入项目目录
+cd news-monitor
+
+# 2. 启动服务（首次会构建镜像，需要几分钟）
+docker compose up -d --build
+
+# 3. 等待服务启动后，恢复数据
+./scripts/restore.sh ./backup_data
+```
+
+### 步骤四：验证
+
+```bash
+# 检查服务状态
+docker compose ps
+
+# 检查数据
+curl -s http://localhost:3456/api/dashboard/stats
+```
+
+访问 http://new_server_ip:3000 确认前端正常。
+
+### 迁移清单
+
+| 项目 | 说明 |
+|------|------|
+| `docker-compose.yml` | Docker 服务编排 |
+| `backend/` | 后端代码（Express + SQLite） |
+| `frontend/` | 前端代码（React + Vite） |
+| `workflow.json` | n8n 工作流配置 |
+| `Dockerfile.n8n` | n8n 自定义镜像 |
+| `scripts/backup.sh` | 备份脚本 |
+| `scripts/restore.sh` | 恢复脚本 |
 
 ## 开发环境
 
@@ -74,6 +126,9 @@ news-monitor/
 ├── Dockerfile.n8n            # n8n 自定义镜像
 ├── workflow.json             # n8n 工作流配置
 ├── update-workflow.js        # 工作流更新脚本
+├── scripts/
+│   ├── backup.sh             # 备份脚本
+│   └── restore.sh            # 恢复脚本
 ├── backend/
 │   ├── Dockerfile
 │   ├── src/
@@ -143,13 +198,6 @@ SQLite 数据库文件存储在 Docker volume `news_data` 中（容器内 `/data
 
 **briefs 表**：id, type, title, content, date, label, news_id, created_at
 
-### 数据备份
-
-```bash
-docker exec news-backend cp /data/news.db /data/news.db.bak
-docker cp news-backend:/data/news.db ./news-backup.db
-```
-
 ## 常见问题
 
 ### n8n 启动失败
@@ -168,19 +216,25 @@ docker compose logs n8n
 docker volume create news_data
 ```
 
-### 前端白屏
-
-检查 nginx 配置是否正确代理到后端：
-
-```bash
-docker exec news-frontend cat /etc/nginx/conf.d/default.conf
-```
-
 ### 重新构建
 
 ```bash
 docker compose down
 docker compose up -d --build
+```
+
+### 手动备份数据库
+
+```bash
+docker exec news-backend cp /data/news.db /data/news.db.bak
+docker cp news-backend:/data/news.db.bak ./news-backup.db
+```
+
+### 手动恢复数据库
+
+```bash
+docker cp ./news-backup.db news-backend:/data/news.db
+docker restart news-backend
 ```
 
 ## n8n 登录信息
